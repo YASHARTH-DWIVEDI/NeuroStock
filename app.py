@@ -9,7 +9,7 @@ import plotly.express as px
 import datetime
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.model_selection import train_test_split
-from tensorflow.keras.models import load_model
+from keras.models import load_model
 
 from tensorflow import keras
 from sklearn.metrics import mean_absolute_error
