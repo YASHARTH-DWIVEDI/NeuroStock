@@ -7,7 +7,7 @@ matplotlib
 scikit-learn
 tensorflow
 keras
-streamlit==1.0.0
+streamlit
 pandas-ta
 statsmodels
 scipy
