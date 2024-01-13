@@ -15,7 +15,7 @@ from tensorflow import keras
 from sklearn.metrics import mean_absolute_error
 from sklearn.metrics import mean_squared_error
 import tensorflow as tf
-from keras.models import load_model
+from tensorflow.keras.models import load_model
 import streamlit as st
 import plotly.graph_objects as go
 import pandas_ta as ta
