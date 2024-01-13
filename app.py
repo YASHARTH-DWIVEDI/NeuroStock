@@ -23,7 +23,7 @@ import pandas_ta as ta
 st.set_page_config( page_title="NeuroStock", page_icon="chart_with_upwards_trend",layout="wide")
 st.title('NeuroStock: Neural Network Enhanced Stock Price Prediction')
 
-default_ticker = "AAPL"
+default_ticker = "GOOGL"
 ticker=st.sidebar.text_input(f"Ticker (default: {default_ticker}):") or default_ticker
 start_date = st.sidebar.date_input("Start date", datetime.date(2012, 1, 1))
 end_date = st.sidebar.date_input("End date", datetime.date(2023, 9, 30))
@@ -31,6 +31,7 @@ end_date = st.sidebar.date_input("End date", datetime.date(2023, 9, 30))
 
 st.sidebar.write("""
 # Popular Stocks
+### Alphabet Inc. (GOOG)
 ### Microsoft Corporation (MSFT)
 ### Apple Inc. (AAPL)
 ### Tesla, Inc. (TSLA)
@@ -52,23 +53,24 @@ st.sidebar.write("""
 ### Infosys Limited (INFY)
 ### Tata Consultancy Services Limited (TCS.NS)
 """)
+data1=yf.download(ticker, start=start_date, end=end_date)
+data3=yf.Ticker(ticker)
+df = data3.history(period='1d', start=start_date, end=end_date).reset_index()
 
-try:
-    data1=yf.download(ticker, start=start_date, end=end_date)
-    data3=yf.Ticker(ticker)
-    df = data3.history(period='1d', start=start_date, end=end_date).reset_index()
 
-    string_logo = '<img src=%s>' % data3.info['logo_url']
-    st.markdown(string_logo, unsafe_allow_html=True)
+# try:
+   
+#     string_logo = '<img src=%s>' % data3.info['logo_url']
+#     st.markdown(string_logo, unsafe_allow_html=True)
 
-    string_name = data3.info['longName']
-    st.header('**%s**' % string_name)
+#     string_name = data3.info['longName']
+#     st.header('**%s**' % string_name)
 
-    string_summary = data3.info['longBusinessSummary']
-    st.info(string_summary)
+#     string_summary = data3.info['longBusinessSummary']
+#     st.info(string_summary)
 
-except Exception as e:
-    st.error(f"An error occurred while fetching data for {ticker}: {str(e)}")
+# except Exception as e:
+#     st.error(f"An error occurred while fetching data for {ticker}: {str(e)}")
 
 fig1=go.Figure(data=[go.Candlestick(x=df['Date'],
                                         open=df['Open'],
