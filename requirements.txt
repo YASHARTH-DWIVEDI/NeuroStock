@@ -11,7 +11,3 @@ pandas-ta
 statsmodels
 scipy
 seaborn
-
-
-
-
